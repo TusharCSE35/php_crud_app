@@ -65,4 +65,61 @@ table th, table td {
     vertical-align: middle;
 }
 
+/* Styling for the welcome title */
+.welcome-title {
+    margin-top: 50px;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+/* Container styling for the registration form */
+body.registration-page {
+    background: url('image/registration.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.registration-form {
+    margin-top: 50px;
+}
+
+/* Styling for the card in the registration form */
+.registration-form .card {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Heading for the registration form */
+.registration-form h2 {
+    font-size: 1.5rem;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Input styling specific to the registration form */
+.registration-form .form-control {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Button styling specific to the registration form */
+.registration-form .btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+/* Link styling specific to the registration form */
+.registration-form a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.registration-form a:hover {
+    text-decoration: underline;
+}
+
+
 

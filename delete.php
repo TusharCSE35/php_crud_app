@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
     $result = mysqli_query($connection, $query);
 
     if ($result) {
-        header("Location: index.php?delete_success=true");
+        header("Location: home.php?delete_success=true");
         exit(); 
     } else {
         die("Query Failed: " . mysqli_error($connection));

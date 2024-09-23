@@ -6,8 +6,8 @@
         Student updated successfully.
     </div>
 
-    <div class="border p-4" style="border-radius: 10px; width: 1000px; margin: auto;">
-        <h2 class="text-center">EDIT STUDENT</h2>
+    <div class="border p-4 bg-white" style="border-radius: 10px; width: 1000px; margin: auto; --bs-bg-opacity: .2;">
+        <h2 class="text-center" style="color: white;">EDIT STUDENT</h2>
 
         <?php
         if (isset($_GET['id'])) {
@@ -38,7 +38,7 @@
                     document.getElementById('alertMessage').style.display = 'block';
                     
                     setTimeout(function() {
-                        window.location.href = 'index.php';
+                        window.location.href = 'home.php';
                     }, 2000);
                 </script>
                 ";
@@ -71,7 +71,7 @@
             </div>
 
             <div class="d-flex justify-content-center mb-3">
-                <a href="index.php" class="btn btn-secondary me-5">
+                <a href="home.php" class="btn btn-secondary me-5">
                     <i class="bi bi-x"></i> Cancel
                 </a>
                 <button type="submit" class="btn btn-primary" id="saveChangesBtn">

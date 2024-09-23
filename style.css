@@ -7,11 +7,15 @@
     font-weight: 500;
 }
 
+
 .box1 {
     display: flex; 
     align-items: center; 
     justify-content: space-between; 
     margin-bottom: 15px; 
+}
+.box1 h2{
+    color: white;
 }
 
 .box1 form {
@@ -30,7 +34,7 @@
     text-align: center;
 }
 .icon-update{
-    color: green;
+    color: rgb(13, 149, 13);
     text-align: center;
 }
 .action-icon-cell{
@@ -74,31 +78,40 @@ table th, table td {
     color: #333;
 }
 
+.form-label {
+    color: white;
+}
+
+body.home-update-add-page{
+    background: url('image/home_body.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
 /* Container styling for the registration form */
-body.registration-page {
+body.log-reg-page {
     background: url('image/registration.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
-.registration-form {
+.log-reg-form {
     margin-top: 50px;
 }
 
 /* Styling for the card in the registration form */
-.registration-form .card {
+.log-reg-form .card {
     padding: 20px;
     border-radius: 8px;
 }
 
 /* Heading for the registration form */
-.registration-form h2 {
+.log-reg-form h2 {
     font-size: 1.5rem;
     color: #007bff;
     font-weight: bold;
 }
 
 /* Input styling specific to the registration form */
-.registration-form .form-control {
+.log-reg-form .form-control {
     font-size: 1rem;
     padding: 10px;
     border-radius: 5px;
@@ -106,19 +119,83 @@ body.registration-page {
 }
 
 /* Button styling specific to the registration form */
-.registration-form .btn-primary {
+.log-reg-form .btn-primary {
     background-color: #007bff;
     border: none;
 }
 
 /* Link styling specific to the registration form */
-.registration-form a {
+.log-reg-form a {
     text-decoration: none;
     color: #007bff;
 }
 
-.registration-form a:hover {
+.log-reg-form a:hover {
     text-decoration: underline;
+}
+
+/* For index */
+.index-welcome-body {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background: url('image/index.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.index-welcome-container {
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-150px);
+}
+
+.index-welcome-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.index-welcome-btn {
+    width: 200px;
+    padding: 10px;
+    font-size: 1.2rem;
+    margin: 10px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.index-welcome-login {
+    background-color: #007bff;
+    color: white;
+}
+
+.index-welcome-login:hover {
+    background-color: #0056b3;
+}
+
+.index-welcome-register {
+    background-color: #28a745;
+    color: white;
+}
+
+.index-welcome-register:hover {
+    background-color: #1e7e34;
+}
+
+.index-welcome-home {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.index-welcome-home:hover {
+    background-color: #117a8b;
 }
 
 

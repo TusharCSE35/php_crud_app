@@ -1,6 +1,12 @@
 <?php include('header.php'); ?>
 <?php include('dbcon.php'); ?>
 
+<?php if (isset($_GET['delete_success']) && $_GET['delete_success'] == 'true'): ?>
+    <div id="alertMessage">
+        Student deleted successfully!
+    </div>
+<?php endif; ?>
+
 <div class="box1">
     <h2>ALL STUDENTS</h2>
     <form action="add_student.php" method="GET">
@@ -25,7 +31,7 @@
     <tbody>
 
         <?php
-        $query = "select * from students";
+        $query = "SELECT * FROM students";
         $result = mysqli_query($connection, $query);
 
         if (!$result) {
@@ -47,7 +53,7 @@
                     </td>
 
                     <td class="action-icon-cell">
-                        <a href="#">
+                        <a href="#" onclick="confirmDelete(<?php echo $row['id']; ?>)">
                             <i class="bi bi-trash icon-delete" title="Delete"></i>
                         </a>
                     </td>
@@ -58,5 +64,23 @@
         ?>
     </tbody>
 </table>
+
+<script>
+function confirmDelete(id) {
+    if (confirm("Are you sure you want to delete this student?")) {
+        window.location.href = "delete.php?id=" + id;
+    }
+}
+
+window.onload = function() {
+    const alertMessage = document.getElementById("alertMessage");
+    if (alertMessage) {
+        alertMessage.style.display = "block";  // Show the message
+        setTimeout(function() {
+            alertMessage.style.display = "none";  // Hide the message after 2 seconds
+        }, 2000);  // 2000 milliseconds = 2 seconds
+    }
+}
+</script>
 
 <?php include('footer.php'); ?>

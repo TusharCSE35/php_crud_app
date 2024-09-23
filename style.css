@@ -7,11 +7,18 @@
     font-weight: 500;
 }
 
-.box1 h2{
-    float: left;
+.box1 {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    margin-bottom: 15px; 
 }
-.box1 button{
-    float: right;
+
+.box1 form {
+    flex-grow: 1;
+    display: flex; 
+    justify-content: center;
+    margin: 0 20px; 
 }
 
 .container{

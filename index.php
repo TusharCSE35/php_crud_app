@@ -7,8 +7,14 @@
     </div>
 <?php endif; ?>
 
-<div class="box1">
+<div class="box1 d-flex align-items-center justify-content-between" style="margin-bottom: 15px;">
     <h2>ALL STUDENTS</h2>
+    
+    <form method="GET" action="index.php" class="d-flex" style="flex-grow: 1; justify-content: center; margin: 0 250px;">
+        <input class="form-control" type="search" name="search" placeholder="Search by name, email, or phone" aria-label="Search" style="width: 200px;"> 
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+
     <form action="add_student.php" method="GET">
         <button type="submit" class="btn btn-primary">
             <i class="bi bi-plus"></i> ADD STUDENT
@@ -16,7 +22,8 @@
     </form>
 </div>
 
-<table class="table table-hover table-bordered  table-striped">
+
+<table class="table table-hover table-bordered table-striped">
     <thead>
         <tr>
             <th>ID</th>
@@ -31,7 +38,17 @@
     <tbody>
 
         <?php
-        $query = "SELECT * FROM students";
+        if (isset($_GET['search'])) {
+            $search = mysqli_real_escape_string($connection, $_GET['search']);
+            $query = "SELECT * FROM students WHERE first_name LIKE '%$search%' 
+                      OR last_name LIKE '%$search%' 
+                      OR email LIKE '%$search%' 
+                      OR phone LIKE '%$search%' 
+                      OR age LIKE '%$search%'";
+        } else {
+            $query = "SELECT * FROM students";
+        }
+
         $result = mysqli_query($connection, $query);
 
         if (!$result) {
@@ -75,10 +92,10 @@ function confirmDelete(id) {
 window.onload = function() {
     const alertMessage = document.getElementById("alertMessage");
     if (alertMessage) {
-        alertMessage.style.display = "block";  // Show the message
+        alertMessage.style.display = "block";  
         setTimeout(function() {
-            alertMessage.style.display = "none";  // Hide the message after 2 seconds
-        }, 2000);  // 2000 milliseconds = 2 seconds
+            alertMessage.style.display = "none";  
+        }, 2000); 
     }
 }
 </script>

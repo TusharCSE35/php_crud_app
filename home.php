@@ -1,5 +1,16 @@
-<?php include('header.php'); ?>
-<?php include('dbcon.php'); ?>
+<?php
+session_start();
+include('header.php');
+include('dbcon.php');
+ // Start the session
+
+// Logout functionality
+if (isset($_GET['logout'])) {
+    session_destroy(); // Destroy the session
+    header("Location: home.php"); // Redirect to the home page
+    exit();
+}
+?>
 
 <?php if (isset($_GET['delete_success']) && $_GET['delete_success'] == 'true'): ?>
     <div id="alertMessage">
@@ -7,25 +18,45 @@
     </div>
 <?php endif; ?>
 
-<div class="box1 d-flex align-items-center justify-content-between" style="margin-bottom: 15px;">
-    <h2>ALL STUDENTS</h2>
+<!-- Row for ALL STUDENTS, Search Bar, and ADD STUDENT button -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 style="color: white;">ALL STUDENTS</h2>
 
-    <form method="GET" action="home.php" class="d-flex" style="flex-grow: 1; justify-content: center; margin: 0 250px;">
-        <input class="form-control" type="search" name="search" placeholder="Search by name, email, or phone" aria-label="Search" style="width: 200px;">
-        <button class="btn" type="submit" style="background-color: gray; color: white; border: none;"
-            onmouseover="this.style.backgroundColor='green'"
-            onmouseout="this.style.backgroundColor='gray'">
-            <i class="bi bi-search"></i> Search
-        </button>
-    </form>
+    <div class="text-center flex-grow-1">
+        <form action="home.php" method="GET" class="d-flex justify-content-center">
+            <input type="text" name="search" class="form-control" placeholder="Search" required style="width: 300px;"> <!-- Adjusted width -->
+            <button type="submit" class="btn btn-secondary ml-2">
+                <i class="bi bi-search"></i> <!-- Search icon -->
+            </button>
+        </form>
+    </div>
 
-
-    <form action="add_student.php" method="GET">
-        <button type="submit" class="btn btn-primary">
-            <i class="bi bi-plus"></i> ADD STUDENT
-        </button>
-    </form>
+    <?php if (isset($_SESSION['username'])): ?>
+        <form action="add_student.php" method="GET">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-plus"></i> ADD STUDENT
+            </button>
+        </form>
+    <?php else: ?>
+        <div class="text-right">
+            <a href="login.php" class="btn btn-success btn-sm">
+                <i class="bi bi-person-fill"></i> Login <!-- Added login icon -->
+            </a>
+        </div>
+    <?php endif; ?>
 </div>
+
+<!-- Row for Username and Logout button -->
+<?php if (isset($_SESSION['username'])): ?>
+    <div class="d-flex justify-content-end mb-2">
+        <div class="text-right">
+            <span class="text-white font-weight-bold">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+            <a href="home.php?logout=true" class="btn btn-danger btn-sm ml-2">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+    </div>
+<?php endif; ?>
 
 <table class="table table-hover table-bordered table-striped">
     <thead>
@@ -36,11 +67,12 @@
             <th>Email</th>
             <th>Phone</th>
             <th>Age</th>
-            <th colspan="2">Action</th>
+            <?php if (isset($_SESSION['username'])): ?> <!-- Check if user is logged in -->
+                <th colspan="2">Action</th>
+            <?php endif; ?>
         </tr>
     </thead>
     <tbody>
-
         <?php
         if (isset($_GET['search'])) {
             $search = mysqli_real_escape_string($connection, $_GET['search']);
@@ -67,17 +99,18 @@
                     <td><?php echo $row['email'] ?></td>
                     <td><?php echo $row['phone'] ?></td>
                     <td><?php echo $row['age'] ?></td>
-                    <td class="action-icon-cell">
-                        <a href="update.php?id=<?php echo $row['id']; ?>">
-                            <i class="bi bi-pencil-square icon-update" title="Update"></i>
-                        </a>
-                    </td>
-
-                    <td class="action-icon-cell">
-                        <a href="#" onclick="confirmDelete(<?php echo $row['id']; ?>)">
-                            <i class="bi bi-trash icon-delete" title="Delete"></i>
-                        </a>
-                    </td>
+                    <?php if (isset($_SESSION['username'])): ?> <!-- Check if user is logged in -->
+                        <td class="action-icon-cell">
+                            <a href="update.php?id=<?php echo $row['id']; ?>">
+                                <i class="bi bi-pencil-square icon-update" title="Update"></i>
+                            </a>
+                        </td>
+                        <td class="action-icon-cell">
+                            <a href="#" onclick="confirmDelete(<?php echo $row['id']; ?>)">
+                                <i class="bi bi-trash icon-delete" title="Delete"></i>
+                            </a>
+                        </td>
+                    <?php endif; ?>
                 </tr>
         <?php
             }

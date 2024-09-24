@@ -16,6 +16,10 @@
 </head>
 
 <body class="home-update-add-page">
-    <h1 id="main_title">CRUD APPLICATION IN PHP</h1>
+    <h1 id="main_title" class="text-center mb-0">CRUD APPLICATION IN PHP</h1>
+    <div class="d-flex justify-content-end">
+        <a href="index.php" class="btn btn-secondary btn-sm">Main Page</a>
+    </div>
+
 
     <div class="container">

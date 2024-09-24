@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>Login</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- External CSS -->
@@ -30,7 +30,7 @@
                                 <input type="password" name="password" class="form-control" placeholder="Password" required>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="submit" name="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" name="login" class="btn btn-primary">Login</button>
                             </div>
                         </form>
                         <div class="text-center mt-3">
